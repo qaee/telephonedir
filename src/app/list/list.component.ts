@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CONTACTS} from '../model/mock-contact';
+import {Contact} from '../model/contact';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  constructor() { }
-
+  contacts: Contact[] = CONTACTS;
   ngOnInit() {
   }
-
 }

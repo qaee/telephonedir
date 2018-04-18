@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit {
   openDialog(contact: Contact) {
     let dialogRef = this.dialog.open(AddcontactComponent, {
       width: '400',
-      data: { name: contact.name}
+      data: { contact: contact}
     });
 
     dialogRef.afterClosed().subscribe(result => {

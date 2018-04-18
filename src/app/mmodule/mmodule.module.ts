@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule, MatChipsModule,
-  MatDialogModule, MatDividerModule,
-  MatInputModule,
+  MatDialogModule, MatDividerModule, MatGridListModule, MatIconModule,
+  MatInputModule, MatListModule,
   MatPaginatorModule,
   MatTableModule,
   MatToolbarModule
@@ -21,7 +21,10 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatGridListModule,
+    MatIconModule,
+    MatListModule
   ], exports: [
     CommonModule,
     MatToolbarModule,
@@ -32,7 +35,10 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatGridListModule,
+    MatIconModule,
+    MatListModule
   ],
   declarations: []
 })
