@@ -1,19 +1,34 @@
-<mat-card *ngFor="let contact of contacts" class="example-card">
-  <mat-grid-list cols="6">
-    <mat-grid-tile colspan="1" rowspan="1" [style.border-right]="'1px dashed #ddd'" >
-      <img mat-list-avatar="/assets/img/profile.jpg" alt="Desc 1" />
-    </mat-grid-tile>
-    <mat-grid-tile colspan="2" rowspan="1" [style.border-right]="'1px dashed #ddd'" >
+<mat-card *ngFor="let contact of contacts" class="contact-card">
+  <mat-grid-list cols="3" rowHeight="50">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <mat-list>
         <mat-list-item>
-          <mat-icon>home</mat-icon>
-          <span style="padding-left: 10px">0173329119</span>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon>work</mat-icon>
-          <span style="padding-left: 10px">089224542345</span>
+          <img mat-list-avatar src="/assets/img/profile.jpg"  />
+          <h2 mat-line>{{contact.name}}</h2>
+          <br />
+          <h3 mat-line>{{contact.address}}</h3>
         </mat-list-item>
       </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile  [colspan]="1" [rowspan]="contact.contactNumbers.length">
+      <mat-list>
+        <mat-list-item *ngFor="let contactNumber of contact.contactNumbers">
+          <mat-icon>{{contactNumber.telephoneType}}</mat-icon>
+          <span>{{contactNumber.telephoneNumber}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span color="primary">EDIT</span>
+        </button>
+        <button mat-menu-item color="primary">Delete</button>
+      </mat-menu>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>

@@ -4,7 +4,7 @@ import {
   MatButtonModule,
   MatCardModule, MatChipsModule,
   MatDialogModule, MatDividerModule, MatGridListModule, MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule, MatListModule, MatMenuModule,
   MatPaginatorModule,
   MatTableModule,
   MatToolbarModule
@@ -24,7 +24,8 @@ import {
     MatChipsModule,
     MatGridListModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ], exports: [
     CommonModule,
     MatToolbarModule,
@@ -38,7 +39,8 @@ import {
     MatChipsModule,
     MatGridListModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   declarations: []
 })

@@ -1,8 +1,7 @@
-.example-card {
-  max-width: 600px;
+.avatar {
+  background-image: url('/assets/img/profile.jpg');
+  background-size: contain;
 }
-
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.contact-card {
+  border: dot-dash;
 }
