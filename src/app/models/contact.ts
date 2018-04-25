@@ -1,4 +1,4 @@
-import {ContactNumber} from '../contact/contact-number';
+import {ContactNumber} from './contact-number';
 
 export class Contact {
   id: number;

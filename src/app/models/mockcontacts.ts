@@ -6,7 +6,7 @@ export const CONTACTS: Contact[] = [
       {telephoneNumber: '01733291119', telephoneType : 'home'},
       {telephoneNumber: '018983838', telephoneType : 'work'}
     ]
-},
+  },
   {id: 2, name: 'Faiza Ali', address: 'Beta Str 5, 85774 Unterföhring',
     contactNumbers: [
       {telephoneNumber: '01733291119', telephoneType : 'home'},
@@ -32,5 +32,3 @@ export const CONTACTS: Contact[] = [
     ]
   }
 ];
-
-export class MockContact {}
