@@ -4,13 +4,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MmoduleModule} from './mmodule/mmodule.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ContactService} from './contact.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DataService} from './services/data.service';
+import {ContactService} from './services/contact.service';
 import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ContactService, DataService],
+  providers: [ContactService],
   bootstrap: [AppComponent],
   entryComponents: [
     AddDialogComponent,

@@ -10,7 +10,7 @@
 
   <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput (keypress)="loadData()" placeholder="Filter Contacts">
+      <input matInput #filter placeholder="Filter Contacts" (keyup)="filterContacts($event)">
     </mat-form-field>
   </div>
   <mat-table #table [dataSource]="dataSource" class="mat-cell">

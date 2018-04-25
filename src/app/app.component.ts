@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {DataService} from './services/data.service';
+import {ContactService} from './services/contact.service';
 import {Contact} from './models/contact';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
@@ -17,6 +17,6 @@ export class AppComponent {
   dataSource;
   index: number;
   id: number;
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: ContactService) {}
 
 }

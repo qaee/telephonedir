@@ -1,6 +1,6 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
-import {DataService} from '../../services/data.service';
+import {ContactService} from '../../services/contact.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Contact} from '../../models/contact';
 
@@ -13,7 +13,7 @@ import {Contact} from '../../models/contact';
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Contact,
-              public dataService: DataService) { }
+              public dataService: ContactService) { }
 
   formControl = new FormControl('', [
     Validators.required
