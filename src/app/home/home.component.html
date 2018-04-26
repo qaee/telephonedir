@@ -56,9 +56,9 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <div class="no-results" [style.display]=" getLength() == 0 ? '' : 'none'">
+  <!--<div class="no-results" [style.display]=" getLength() == 0 ? '' : 'none'">
     No results
-  </div>
+  </div>-->
   <mat-paginator #paginator
                  [pageSize]="2"
                  [pageSizeOptions]="[2, 4, 5, 10]">

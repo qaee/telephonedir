@@ -1,35 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Contact} from '../models/contact';
 import {CONTACTS} from '../models/mockcontacts';
-
+import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import {catchError, retry, tap} from 'rxjs/operators';
 @Injectable()
 export class ContactService {
-  constructor () {}
-  dialogData: any;
-
-  getAllContacts(): Contact[] {
-    return CONTACTS;
+  constructor (private http: HttpClient) {}
+  _url = "/assets/data/contacts.json";
+  getAllContacts(): Observable<Contact[]> {
+    return this.http.get<Contact>(this._url);
   }
-
-  getDialogData() {
-    return this.dialogData;
+  addContact (contact: Contact): void {
+    console.log(contact);
   }
-
-  // DEMO ONLY, you can find working methods below
-  addIssue (issue: Contact): void {
-    this.dialogData = issue;
+  updateIssue (contact: Contact): void {
+    console.log(contact);
   }
-
-  updateIssue (issue: Contact): void {
-    this.dialogData = issue;
-  }
-
   deleteIssue (id: number): void {
-    console.log(id);
-  }
-
-  filterContacts(value: any) {
-    return this.getAllContacts().filter(contact => contact.name.startsWith(value));
+    console.log(contact);
   }
 }
 

@@ -14,27 +14,33 @@ export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Contact,
               public dataService: ContactService) { }
-
   formControl = new FormControl('', [
     Validators.required
     // Validators.email,
   ]);
-
+  id: number;
+  name: string;
+  address: string;
+  contactNumber: string;
+  contact: Contact;
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
       this.formControl.hasError('email') ? 'Not a valid email' :
         '';
   }
-
   submit() {
   // emppty stuff
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   public confirmAdd(): void {
-    this.dataService.addIssue(this.data);
+    this.contact = {
+      id: this.id,
+      name: this.name,
+      address: this.address,
+      contactNumbers: {telephoneNumber: this.contactNumber}
+    };
+    this.dataService.addContact(this.contact);
   }
 }

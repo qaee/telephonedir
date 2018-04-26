@@ -10,6 +10,7 @@ import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
 import {HomeComponent} from './home/home.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HomeComponent} from './home/home.component';
     BrowserAnimationsModule,
     MmoduleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ContactService],
   bootstrap: [AppComponent],
