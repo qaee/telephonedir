@@ -21,7 +21,7 @@ export class AddDialogComponent {
   id: number;
   name: string;
   address: string;
-  contactNumber: string;
+  contactNumber: number;
   contact: Contact;
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
@@ -35,12 +35,12 @@ export class AddDialogComponent {
     this.dialogRef.close();
   }
   public confirmAdd(): void {
-    this.contact = {
+   /* this.contact = {
       id: this.id,
       name: this.name,
       address: this.address,
       contactNumbers: {telephoneNumber: this.contactNumber}
     };
-    this.dataService.addContact(this.contact);
+    this.dataService.addContact(this.contact);*/
   }
 }
