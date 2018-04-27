@@ -7,7 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable()
 export class ContactService {
   conts: Contact[];
-  _url = '/assets/data/contacts.json';
+  /*_url = '/assets/data/contacts.json';*/
+  _url = 'http://localhost:7001/telephonebook/rest/contacts';
   constructor (private http: HttpClient) {}
   public getContacts() {
     return this.http.get<Contact[]>(this._url);
