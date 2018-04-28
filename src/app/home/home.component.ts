@@ -1,8 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {Contact} from '../models/contact';
 import {AddDialogComponent} from '../dialogs/add/add.dialog.component';
-import {ContactService} from '../services/contact.service';
+import {Contact, ContactsEntity, ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +9,9 @@ import {ContactService} from '../services/contact.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  contacts: Contact[];
+  contacts: ContactsEntity[];
   dataSource;
-  displayedColumns = ['id', 'Name', 'address', 'contactNumbers', 'actions'];
+  displayedColumns = ['id', 'Name', 'address', 'contactNumber', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
@@ -27,8 +26,8 @@ export class HomeComponent implements OnInit {
     this.contactService
       .getContacts()
       .subscribe(resp => {
-        this.contacts = resp;
-        this.dataSource = new MatTableDataSource<Contact>(this.contacts);
+        this.contacts = resp._embedded.contacts;
+        this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
       });
   }
   getLength(): number {
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
     });
   }
   refresh() {
-    this.dataSource = new MatTableDataSource<Contact>(this.contacts);
+    this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
     this.dataSource.filter = this.filter.nativeElement.value;
   }
   public filterContacts(event: any) {
