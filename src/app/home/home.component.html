@@ -14,23 +14,21 @@
     </mat-form-field>
   </div>
   <mat-table #table [dataSource]="dataSource" class="mat-cell">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.id}} </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="Name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="address">
+   <ng-container matColumnDef="Address">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.address}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="contactNumber">
-      <mat-header-cell *matHeaderCellDef >contactNumbers</mat-header-cell>
-      <mat-cell *matCellDef="let row"> </mat-cell>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ContactNumber">
+      <mat-header-cell *matHeaderCellDef >ContactNumber</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.contactNumber[0].telephoneNumber}}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; actions &ndash;&gt;
@@ -42,11 +40,10 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+        <button mat-icon-button color="accent" (click)="startEdit(row)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-
-        <button mat-icon-button color="primary" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="primary" (click)="deleteItem(row)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

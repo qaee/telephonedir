@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {AddDialogComponent} from '../dialogs/add/add.dialog.component';
 import {Contact, ContactsEntity, ContactService} from '../services/contact.service';
+import {EditDialogComponent} from '../dialogs/edit/edit.dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import {Contact, ContactsEntity, ContactService} from '../services/contact.servi
 export class HomeComponent implements OnInit {
   contacts: ContactsEntity[];
   dataSource;
-  displayedColumns = ['id', 'Name', 'address', 'contactNumber', 'actions'];
+  displayedColumns = ['Name', 'Address', 'Email', 'ContactNumber', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
@@ -37,12 +38,26 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(AddDialogComponent, {
       data: {contact: contact}
     });
+    this.getContacts();
   }
   refresh() {
+    this.getContacts();
     this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
     this.dataSource.filter = this.filter.nativeElement.value;
   }
   public filterContacts(event: any) {
     this.dataSource.filter = this.filter.nativeElement.value;
+  }
+
+  startEdit(contact: any) {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: {contact: contact}
+    });
+    this.getContacts();
+    this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
+  }
+
+  deleteItem(data: any) {
+    this.contactService.deleteContact(data);
   }
 }

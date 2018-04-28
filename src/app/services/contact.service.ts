@@ -15,14 +15,44 @@ export class ContactService {
     );*/
     return this.http.get<Contact>(this._url);
   }
-  addContact (contact: Contact): void {
+  addContact (contact: ContactsEntity): void {
     console.log(contact);
+    this.http
+      .post(this._url, contact)
+      .subscribe(status => console.log(JSON.stringify(status)));
   }
-  updateIssue (contact: Contact): void {
-    console.log(contact);
+  updateContact (contact: ContactsEntity): void {
+    console.table(contact._links.self);
+    console.table()
+    this.http
+      .put(contact._links.self.href, contact)
+      .subscribe(
+        (val) => {
+          console.log("Update call successful value returned in body",
+            val);
+        },
+        response => {
+          console.log("Update call in error", response);
+        },
+        () => {
+          console.log("The Update observable is now completed.");
+        });
+
   }
-  deleteIssue (id: number): void {
- //   console.log(contact);
+  deleteContact (contact: ContactsEntity): void {
+    this.http.
+    delete(contact._links.self.href)
+      .subscribe(
+      (val) => {
+        console.log("DELETE call successful value returned in body",
+          val);
+      },
+      response => {
+        console.log("DELETE call in error", response);
+      },
+      () => {
+        console.log("The DELETE observable is now completed.");
+      });
   }
 }
 
@@ -34,11 +64,12 @@ export interface Embedded {
   contacts?: (ContactsEntity)[] | null;
 }
 export interface ContactsEntity {
+  id?: number;
   name: string;
   address: string;
   email: string;
   contactNumber?: (ContactNumberEntity)[] | null;
-  _links: Links1;
+  _links?: Links1;
 }
 export interface ContactNumberEntity {
   telephoneNumber: string;

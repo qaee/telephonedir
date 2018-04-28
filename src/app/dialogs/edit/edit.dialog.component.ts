@@ -1,6 +1,6 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
-import {ContactService} from '../../services/contact.service';
+import {Contact, ContactsEntity, ContactService} from '../../services/contact.service';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -11,13 +11,14 @@ import {FormControl, Validators} from '@angular/forms';
 export class EditDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: ContactService) { }
-
+              @Inject(MAT_DIALOG_DATA) public data: any, public contactService: ContactService) {
+    this.contact = data.contact;
+  }
   formControl = new FormControl('', [
     Validators.required
     // Validators.email,
   ]);
-
+  contact: ContactsEntity;
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
       this.formControl.hasError('email') ? 'Not a valid email' :
@@ -28,6 +29,6 @@ export class EditDialogComponent {
   }
 
   stopEdit(): void {
-    this.dataService.updateIssue(this.data);
+    this.contactService.updateContact(this.contact);
   }
 }

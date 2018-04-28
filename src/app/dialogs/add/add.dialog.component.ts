@@ -12,16 +12,17 @@ import {FormControl, Validators} from '@angular/forms';
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ContactsEntity,
-              public dataService: ContactService) { }
+              public contactService: ContactService) {
+  }
   formControl = new FormControl('', [
     Validators.required
     // Validators.email,
   ]);
-  id: number;
   name: string;
   address: string;
-  contactNumber: number;
-  contact: Contact;
+  contactNumber: string;
+  email: string;
+  contact: ContactsEntity;
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
       this.formControl.hasError('email') ? 'Not a valid email' :
@@ -34,12 +35,12 @@ export class AddDialogComponent {
     this.dialogRef.close();
   }
   public confirmAdd(): void {
-   /* this.contact = {
-      id: this.id,
+    this.contact = {
+      email: this.email,
       name: this.name,
       address: this.address,
-      contactNumber: {telephoneNumber: this.contactNumber}
+      contactNumber : [{telephoneNumber: this.contactNumber}]
     };
-    this.dataService.addContact(this.contact);*/
+   this.contactService.addContact(this.contact);
   }
 }
