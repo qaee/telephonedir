@@ -18,8 +18,6 @@ export class ContactService {
       .subscribe(status => console.log(JSON.stringify(status)));
   }
   updateContact (contact: ContactsEntity): void {
-    console.table(contact._links.self);
-    console.table()
     this.http
       .put(contact._links.self.href, contact)
       .subscribe(
@@ -35,20 +33,9 @@ export class ContactService {
         });
 
   }
-  deleteContact (contact: ContactsEntity): void {
-    this.http.
-    delete(contact._links.self.href)
-      .subscribe(
-      (val) => {
-        console.log("DELETE call successful value returned in body",
-          val);
-      },
-      response => {
-        console.log("DELETE call in error", response);
-      },
-      () => {
-        console.log("The DELETE observable is now completed.");
-      });
+  deleteContact (contact: ContactsEntity){
+    return this.http.
+    delete(contact._links.self.href);
   }
 }
 

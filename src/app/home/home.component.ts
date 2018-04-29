@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
       .subscribe(resp => {
         this.contacts = resp._embedded.contacts;
         this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
+        console.log('Get Contacts: called ---  ');
       });
   }
   getLength(): number {
@@ -53,8 +54,23 @@ export class HomeComponent implements OnInit {
     });
   }
   deleteItem(data: any) {
-    // this.contactService.deleteContact(data);
+    this.contactService.deleteContact(data)
+      .subscribe(
+        (val) => {
+          console.log("Delete call successful! ",
+            val);
+        },
+        response => {
+          console.log("Delete call in error", response);
+        },
+        () => {
+          this.getContacts();
+          console.log("The Update observable is now completed.");
+        });
     // this.getContacts();
-    this.dataSource._value.add()
+  }
+  refresh() {
+    this.dataSource = new MatTableDataSource<Contact>(this.contacts);
+    this.dataSource.filter = this.filter.nativeElement.value;
   }
 }
