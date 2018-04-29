@@ -81,6 +81,3 @@ export interface Links {
   self: SelfOrContactOrProfile;
   profile: SelfOrContactOrProfile;
 }
-
-
-

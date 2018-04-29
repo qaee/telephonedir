@@ -52,9 +52,9 @@ export class HomeComponent implements OnInit {
       data: {contact: contact}
     });
   }
-
   deleteItem(data: any) {
-    this.contactService.deleteContact(data);
-    this.getContacts();
+    // this.contactService.deleteContact(data);
+    // this.getContacts();
+    this.dataSource._value.add()
   }
 }
