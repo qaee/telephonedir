@@ -5,18 +5,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class ContactService {
-  conts: Contact[];
   /*_url = '/assets/data/contacts.json';*/
   _url = 'http://localhost:8080/contacts';
   constructor (private http: HttpClient) {}
   public getContacts() {
-   /* this.http.get<string>(this._url).pipe(
-      tap(res => console.log(res))
-    );*/
     return this.http.get<Contact>(this._url);
   }
   addContact (contact: ContactsEntity): void {
-    console.log(contact);
+    console.log('Add Contact Post: ');
     this.http
       .post(this._url, contact)
       .subscribe(status => console.log(JSON.stringify(status)));

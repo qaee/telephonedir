@@ -2,6 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {Contact, ContactsEntity, ContactService} from '../../services/contact.service';
 import {FormControl, Validators} from '@angular/forms';
+import {HomeComponent} from '../../home/home.component';
 
 @Component({
   selector: 'app-add.dialog',
@@ -11,13 +12,15 @@ import {FormControl, Validators} from '@angular/forms';
 
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ContactsEntity,
+              @Inject(MAT_DIALOG_DATA) public data: HomeComponent,
               public contactService: ContactService) {
+    this.homeComponent = data;
   }
   formControl = new FormControl('', [
     Validators.required
     // Validators.email,
   ]);
+  homeComponent: HomeComponent;
   name: string;
   address: string;
   contactNumber: string;

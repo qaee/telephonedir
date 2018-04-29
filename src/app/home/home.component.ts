@@ -35,29 +35,26 @@ export class HomeComponent implements OnInit {
     return 0;
   }
   addNew(contact: Contact) {
-    const dialogRef = this.dialog.open(AddDialogComponent, {
+    const addDialog = this.dialog.open(AddDialogComponent, {
       data: {contact: contact}
     });
-    this.getContacts();
-  }
-  refresh() {
-    this.getContacts();
-    this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
-    this.dataSource.filter = this.filter.nativeElement.value;
+    addDialog.afterClosed().subscribe(
+      result => {
+        this.getContacts();
+      }
+    );
   }
   public filterContacts(event: any) {
     this.dataSource.filter = this.filter.nativeElement.value;
   }
-
   startEdit(contact: any) {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
+    this.dialog.open(EditDialogComponent, {
       data: {contact: contact}
     });
-    this.getContacts();
-    this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
   }
 
   deleteItem(data: any) {
     this.contactService.deleteContact(data);
+    this.getContacts();
   }
 }

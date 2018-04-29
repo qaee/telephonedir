@@ -8,7 +8,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ContactService} from './services/contact.service';
 import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
-import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
 import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -17,7 +16,6 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     AddDialogComponent,
     EditDialogComponent,
-    DeleteDialogComponent,
     HomeComponent
   ],
   imports: [
@@ -33,8 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
   bootstrap: [AppComponent],
   entryComponents: [
     AddDialogComponent,
-    EditDialogComponent,
-    DeleteDialogComponent
+    EditDialogComponent
   ]
 })
 export class AppModule { }
