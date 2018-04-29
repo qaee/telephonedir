@@ -35,6 +35,13 @@
         <mat-hint align="end">{{inputstate.value?.length || 0}}/20</mat-hint>
       </mat-form-field>
     </div>
+    <div class="form">
+      <mat-form-field>
+        <span><mat-icon style="padding-right: 10px;">close</mat-icon></span>
+        <input matInput type="text" placeholder="Clearable input" />
+
+      </mat-form-field>
+    </div>
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
       <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>

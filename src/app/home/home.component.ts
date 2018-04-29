@@ -12,7 +12,7 @@ import {EditDialogComponent} from '../dialogs/edit/edit.dialog.component';
 export class HomeComponent implements OnInit {
   contacts: ContactsEntity[];
   dataSource;
-  displayedColumns = ['Name', 'Address', 'Email', 'ContactNumber', 'actions'];
+  displayedColumns = ['Name', 'ContactNumber', 'Address', 'Email' , 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
