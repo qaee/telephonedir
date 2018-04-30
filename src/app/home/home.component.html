@@ -34,9 +34,8 @@
     &lt;!&ndash; actions &ndash;&gt;
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-        </button>
+        <button mat-raised-button color="accent" (click)="addNew()">Create</button>
+
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">

@@ -69,8 +69,8 @@ export class HomeComponent implements OnInit {
         });
     // this.getContacts();
   }
-  refresh() {
-    this.dataSource = new MatTableDataSource<Contact>(this.contacts);
-    this.dataSource.filter = this.filter.nativeElement.value;
-  }
+  // refresh() {
+  //   this.dataSource = new MatTableDataSource<Contact>(this.contacts);
+  //   this.dataSource.filter = this.filter.nativeElement.value;
+  // }
 }
