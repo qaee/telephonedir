@@ -27,7 +27,9 @@ export class EditDialogComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  submit() {
+    // emppty stuff
+  }
   stopEdit(): void {
     this.contactService.updateContact(this.contact);
   }

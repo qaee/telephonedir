@@ -3,6 +3,9 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 import {AddDialogComponent} from '../dialogs/add/add.dialog.component';
 import {Contact, ContactsEntity, ContactService} from '../services/contact.service';
 import {EditDialogComponent} from '../dialogs/edit/edit.dialog.component';
+import {DataSource} from '@angular/cdk/collections';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +24,8 @@ export class HomeComponent implements OnInit {
     this.getContacts();
   }
   ngAfterViewInit() {
-   /* this.dataSource.paginator = this.paginator;*/
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   getContacts() {
     this.contactService
@@ -29,6 +33,7 @@ export class HomeComponent implements OnInit {
       .subscribe(resp => {
         this.contacts = resp._embedded.contacts;
         this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
+        this.dataSource.sort = this.sort;
         console.log('Get Contacts: called ---  ');
       });
   }
@@ -69,8 +74,4 @@ export class HomeComponent implements OnInit {
         });
     // this.getContacts();
   }
-  // refresh() {
-  //   this.dataSource = new MatTableDataSource<Contact>(this.contacts);
-  //   this.dataSource.filter = this.filter.nativeElement.value;
-  // }
 }

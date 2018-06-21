@@ -9,7 +9,7 @@
       <input matInput #filter placeholder="Filter Contacts" (keyup)="filterContacts($event)">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" class="mat-cell">
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     <ng-container matColumnDef="Name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
@@ -55,8 +55,9 @@
   <!--<div class="no-results" [style.display]=" getLength() == 0 ? '' : 'none'">
     No results
   </div>-->
- <!-- <mat-paginator #paginator
-                 [pageSize]="2"
-                 [pageSizeOptions]="[2, 4, 5, 10]">
-  </mat-paginator>-->
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [length]="dataSource.filter.data"
+                 [pageSizeOptions]="[10, 20, 30, 40]">
+  </mat-paginator>
 </div>
